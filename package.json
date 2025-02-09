@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production node index",
-    "dev": " nodemon index",
+    "start": "NODE_ENV=production node backend/index",
+    "dev": " nodemon backend/index",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
