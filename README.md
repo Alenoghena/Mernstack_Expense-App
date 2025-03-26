@@ -2,7 +2,7 @@
 
 A fullstack application that uses graphql to handle
 data management. It has powerful features designed to
-help the user track their personal daily expenditure. From expenses as mundane as groceries through banking to investment, the application stores data in database and ensures that spendings are absolutely tracked.
+help the user track daily personal expenditure. From expenses as mundane as groceries through banking to investment, the application stores data in database and ensures that spendings are absolutely tracked.
 
 # React + Vite
 
