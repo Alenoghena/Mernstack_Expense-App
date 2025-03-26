@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import { Transaction } from "../models/transaction.model.js";
 import bcrypt from "bcryptjs";
+import { ProfilePix } from "../models/profilePix.model.js";
 
 const userResolver = {
   Mutation: {
@@ -92,6 +93,7 @@ const userResolver = {
   Query: {
     authUser: async (_, __, context) => {
       try {
+        console.log("authUser context", context);
         const user = await context.getUser();
         console.log("authUser after login", user);
         return user;
@@ -111,12 +113,27 @@ const userResolver = {
     },
   },
 
-  //TODO=>ADD USER/TRANSACTION RELATION
+  // TODO=>ADD USER/TRANSACTION RELATION
   User: {
     async transactions(parent) {
       try {
         //Here, user is the parent
+        console.log("transactions===", parent._id);
         return await Transaction.find({ userId: parent._id });
+      } catch (err) {
+        throw new Error(err.message);
+      }
+    },
+  },
+  User: {
+    async photo(parent) {
+      try {
+        //Here, user is the parent
+
+        const userId = parent._id;
+        const pix = await ProfilePix.findOne({ userId });
+
+        return pix;
       } catch (err) {
         throw new Error(err.message);
       }

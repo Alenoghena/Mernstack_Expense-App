@@ -8,16 +8,21 @@ type User{
     gender:String!
     token:String!
     transactions:[Transaction!]
+    photo:ProfilePix!
 }
 type Query{
 #  Note: authUser.User does not require this=> !
     authUser:User
     user(userId:ID):User!
+
+
+
+
 }
 type Mutation{
     signUp(input:SignUpInput!):User
     login(input:LoginInput!):User!
-    logout:LogoutResponse!
+    logout:LogoutResponse
 }
 input SignUpInput{
     username:String!
