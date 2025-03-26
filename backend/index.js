@@ -1,7 +1,7 @@
 import express from "express";
 import http from "http";
 import cors from "cors";
-// import path from "path";
+import path from "path";
 // import multer from "multer";
 import { GraphQLLocalStrategy, buildContext } from "graphql-passport";
 import { ApolloServer } from "@apollo/server";
@@ -21,7 +21,7 @@ import { configurePassport } from "./passport/passport.config.js";
 
 // import resolvers from "./resolvers/resolvers.js";
 
-// const __dirname = path.resolve();
+const __dirname = path.resolve();
 const app = express();
 const httpServer = http.createServer(app);
 dotenv.config();
@@ -93,10 +93,10 @@ app.use(
 //app
 //render.com=> backend and frontend under same domain localhost:4000
 
-// app.use(express.static(path.join(__dirname, "frontend", "dist")));
-// app.get(".", (req, res) => {
-//   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-// });
+app.use(express.static(path.join(__dirname, "frontend", "dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 //modified server startup
 const PORT = process.env.PORT || 4000;
 await new Promise((resolve) => httpServer.listen({ port: PORT }, resolve));
